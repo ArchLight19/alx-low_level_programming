@@ -1,35 +1,40 @@
 #include "main.h"
 
 /**
- * sqr_con - finds square root of n
- * @n: number to square
- * @i: test case for root
- * Description: find square root of n using recursion and two variables
- * Return: square root of n or -1 if none
- **/
+ *helperFunction - checks if sqrt of number exists
+ *@num: number.
+ *@pSqrt: poissible sqrt of number.
+ *
+ *Return: sqrt of number ot -1 for error.
+ */
 
-int sqr_con(int n, int i)
+int helperFunction(int num, int pSqrt)
 {
-	if (n == i * i)
-		return (1);
-
-	else if (n < i * i)
-		return (-1);
-
-	return (sqr_con(n, i + 1));
+	if ((pSqrt * pSqrt) == num)
+	{
+		return (pSqrt);
+	}
+	else
+	{
+		if ((pSqrt * pSqrt) > num)
+			return (-1);
+		else
+			return (helperFunction(num, pSqrt + 1));
+	}
 }
 
 /**
- * _sqrt_recursion - find natural square root of n
- * @n: number to square
- * Description: find square root of n using recursion
- * Return: square root of n or -1 if none
- **/
+ *_sqrt_recursion - returns the natural square root of a number.
+ *@n: number to find sqrt of.
+ *
+ *Return: squareroot of n.
+ *-1 if n does not have a natural sqrt.
+ */
 
 int _sqrt_recursion(int n)
 {
 	if (n < 0)
 		return (-1);
-
-	return (sqr_con(n, 0));
+	else
+		return (helperFunction(n, 0));
 }
